@@ -24,7 +24,7 @@ BootForms builds on top of my more general [Form](https://github.com/adamwathan/
 You can install this package via Composer by running this command in your terminal in the root of your project:
 
 ```bash
-composer require adamwathan/bootforms
+composer require ceddyg/bootforms
 ```
 
 ### Laravel
