@@ -1,10 +1,9 @@
 {
-    "name": "adamwathan/bootforms",
+    "name": "ceddyg/bootforms",
     "description": "Just a Formbuilder with some Bootstrap specific conveniences. Remembers old input, retrieves error messages and handles all your boilerplate Bootstrap markup automatically.",
     "authors": [
         {
-            "name": "Adam Wathan",
-            "email": "adam.wathan@gmail.com"
+            "name": "Adam Wathan"
         }
     ],
     "license": "MIT",
