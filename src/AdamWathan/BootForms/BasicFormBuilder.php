@@ -5,6 +5,7 @@ use AdamWathan\BootForms\Elements\FormGroup;
 use AdamWathan\BootForms\Elements\GroupWrapper;
 use AdamWathan\BootForms\Elements\HelpBlock;
 use AdamWathan\BootForms\Elements\InputGroup;
+use AdamWathan\BootForms\Elements\YesNoGroup;
 use AdamWathan\Form\FormBuilder;
 
 class BasicFormBuilder
@@ -172,6 +173,27 @@ class BasicFormBuilder
         }
 
         return $this->formGroup($label, $name, $control);
+    }
+
+    public function yesNo($label, $name)
+    {
+        $controlYes = $this->builder->radio($name, 1);
+        $controlNo  = $this->builder->radio($name, 0);
+        
+        $labelYes   = $this->builder->label(__('general.yes'), $name)->after($controlYes)->addClass('btn btn-default btn-on');
+        $labelNo    = $this->builder->label(__('general.no'), $name)->after($controlNo)->addClass('btn btn-default btn-off');
+        $label      = $this->builder->label($label)->addClass('control-label');
+        
+        if ($this->builder->getValueFor($name) == 1)
+        {
+            $labelYes->addClass('active');
+        }
+        elseif ($this->builder->getValueFor($name) == 0)
+        {
+            $labelNo->addClass('active');
+        }
+        
+        return new YesNoGroup($label, $labelYes, $labelNo);
     }
 
     public function __call($method, $parameters)
