@@ -6,6 +6,7 @@ use AdamWathan\BootForms\Elements\GroupWrapper;
 use AdamWathan\BootForms\Elements\HelpBlock;
 use AdamWathan\BootForms\Elements\InputGroup;
 use AdamWathan\BootForms\Elements\YesNoGroup;
+use AdamWathan\BootForms\Elements\ViewTabPaneGroup;
 use AdamWathan\Form\FormBuilder;
 
 class BasicFormBuilder
@@ -194,6 +195,11 @@ class BasicFormBuilder
         }
         
         return new YesNoGroup($label, $labelYes, $labelNo);
+    }
+
+    public function viewTabPane($view, $aTab)
+    {
+        return new ViewTabPaneGroup($view, $aTab);
     }
 
     public function __call($method, $parameters)
