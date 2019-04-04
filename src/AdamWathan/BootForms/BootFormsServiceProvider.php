@@ -16,6 +16,16 @@ class BootFormsServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishesTranslations();
+    }
+    
+    /**
      * Register the service provider.
      *
      * @return void
@@ -28,7 +38,6 @@ class BootFormsServiceProvider extends ServiceProvider
         $this->registerBasicFormBuilder();
         $this->registerHorizontalFormBuilder();
         $this->registerBootForm();
-        $this->publishesTranslations();
     }
 
     protected function registerErrorStore()
