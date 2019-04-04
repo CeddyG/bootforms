@@ -28,6 +28,7 @@ class BootFormsServiceProvider extends ServiceProvider
         $this->registerBasicFormBuilder();
         $this->registerHorizontalFormBuilder();
         $this->registerBootForm();
+        $this->publishesTranslations();
     }
 
     protected function registerErrorStore()
@@ -75,6 +76,18 @@ class BootFormsServiceProvider extends ServiceProvider
         $this->app->singleton('bootform', function ($app) {
             return new BootForm($app['bootform.basic'], $app['bootform.horizontal']);
         });
+    }
+	
+	private function publishesTranslations()
+	{
+		$sTransPath = __DIR__.'/resources/lang';
+
+        $this->publishes([
+			$sTransPath => resource_path('lang/vendor/bootforms'),
+			'bootforms.trans'
+		]);
+        
+		$this->loadTranslationsFrom($sTransPath, 'bootforms');
     }
 
     /**

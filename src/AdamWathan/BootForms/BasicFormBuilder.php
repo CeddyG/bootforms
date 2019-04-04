@@ -181,8 +181,8 @@ class BasicFormBuilder
         $controlYes = $this->builder->radio($name, 1);
         $controlNo  = $this->builder->radio($name, 0);
         
-        $labelYes   = $this->builder->label(__('general.yes'), $name)->after($controlYes)->addClass('btn btn-default btn-on');
-        $labelNo    = $this->builder->label(__('general.no'), $name)->after($controlNo)->addClass('btn btn-default btn-off');
+        $labelYes   = $this->builder->label(__('bootforms::general.yes'), $name)->after($controlYes)->addClass('btn btn-default btn-on');
+        $labelNo    = $this->builder->label(__('bootforms::general.no'), $name)->after($controlNo)->addClass('btn btn-default btn-off');
         $label      = $this->builder->label($label)->addClass('control-label');
         
         if ($this->builder->getValueFor($name) == 1)
