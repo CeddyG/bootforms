@@ -7,6 +7,7 @@ use AdamWathan\BootForms\Elements\HelpBlock;
 use AdamWathan\BootForms\Elements\InputGroup;
 use AdamWathan\BootForms\Elements\YesNoGroup;
 use AdamWathan\BootForms\Elements\ViewTabPaneGroup;
+use AdamWathan\BootForms\Elements\BtnGroup;
 use AdamWathan\Form\FormBuilder;
 
 class BasicFormBuilder
@@ -195,6 +196,40 @@ class BasicFormBuilder
         }
         
         return new YesNoGroup($label, $labelYes, $labelNo);
+    }
+    
+    public function btnGroup($label, $name, $list, $multiple = false)
+    {
+        $label = $this->builder->label($label)->addClass('control-label');
+        
+        $listLabel = [];
+        foreach ($list as $key => $value)
+        {
+            if ($multiple)
+            {
+                $control = $this->builder->checkbox($name, $value['value']);    
+            }
+            else
+            {
+                $control = $this->builder->radio($name, $value['value']);
+            }
+            
+            $labelItem = $this->builder
+                ->label($value['label'], $name)
+                ->after($control)
+                ->addClass('btn btn-default');
+            
+            if ($this->builder->getValueFor($name) == $value['value'] 
+                || ($multiple && in_array($value['value'], $this->builder->getValueFor($name)))
+            )
+            {
+                $labelItem->addClass('active');
+            }
+        
+            $listLabel[] = $labelItem;
+        }
+        
+        return new BtnGroup($label, $listLabel);
     }
 
     public function viewTabPane($view, $aTab)
