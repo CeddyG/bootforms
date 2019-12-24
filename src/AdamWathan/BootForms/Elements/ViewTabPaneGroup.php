@@ -2,6 +2,7 @@
 
 namespace AdamWathan\BootForms\Elements;
 
+use Illuminate\Support\Str;
 use AdamWathan\Form\Elements\Element;
 
 /**
@@ -19,7 +20,7 @@ class ViewTabPaneGroup extends Element
     {
         $this->sView    = $sView;
         $this->aTab     = $aTab;
-        $this->sId      = str_random(10);
+        $this->sId      = Str::random(10);
         
         $this->addClass('nav-tabs-custom');
     }
